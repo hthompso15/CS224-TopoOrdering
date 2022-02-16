@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.lang.Comparable;
+//import java.lang.Comparable;
 
 //public class Node implements Comparable {
 public class Node {
@@ -13,7 +13,7 @@ public class Node {
     this.name = name;
     this.adjlistOut = new ArrayList<Node>();
     this.adjlistIn = new ArrayList<Node>();
-    this.active = false;
+    this.active = true;
     this.numInFromActive = 0;
   }
 

@@ -56,29 +56,29 @@ public class Main {
     Node n7 = new Node(7);
     Node n8 = new Node(8);
 
-    Graph G = new Graph();
-    G.addNode(n1);
-    G.addNode(n2);
-    G.addNode(n3);
-    G.addNode(n4);
-    G.addNode(n5);
-    G.addNode(n6);
-    G.addNode(n7);
-    G.addNode(n8);
+    Graph H = new Graph();
+    H.addNode(n1);
+    H.addNode(n2);
+    H.addNode(n3);
+    H.addNode(n4);
+    H.addNode(n5);
+    H.addNode(n6);
+    H.addNode(n7);
+    H.addNode(n8);
 
-    G.addEdge(n8, n1);
-    G.addEdge(n1, n2);
-    G.addEdge(n1, n7);
-    G.addEdge(n2, n3);
-    G.addEdge(n2, n5);
-    G.addEdge(n3, n4);
-    G.addEdge(n4, n5);
-    G.addEdge(n5, n6);
-    G.addEdge(n6, n7);
-    G.addEdge(n7, n5);
+    H.addEdge(n8, n1);
+    H.addEdge(n1, n2);
+    H.addEdge(n1, n7);
+    H.addEdge(n2, n3);
+    H.addEdge(n2, n5);
+    H.addEdge(n3, n4);
+    H.addEdge(n4, n5);
+    H.addEdge(n5, n6);
+    H.addEdge(n6, n7);
+    H.addEdge(n7, n5);
 
-    G.print();
+    H.print();
 
-    G.topoOrder();
+    H.topoOrder();
   }
 }

@@ -44,55 +44,31 @@ public class Graph {
   public boolean topoOrder() {
     ArrayList<Node> topo = new ArrayList<Node>();
     
+    // Make O(n+m) --> Currently O(n^2) i think
+    // Make second for look be recursive somehow
+    
     for(Node n: this.nodes) { 
-      
-      if(n.adjlistOut.size() == 0) {
-        
+      if(n.adjlistIn.size() == 0 ) { 
         topo.add(n);
-        
-        topoOrder();
+        n.active = false;
+        for(Node i : n.adjlistOut) {
+          i.adjlistIn.remove(n);
+        } 
       }
-    }
-    System.out.println(topo.size());
+    }  
     
+    //if (all nodes are in topo) {
+      // System.out.println(topo);
+      //return true;
+    //}
+    //else:
+      //System.out.print("There is no ordering");
+      //return false;
     
 
+
+    System.out.println(topo);
     return false;
-
-
-
-
-
-
-    // implement this
-    /**
-     * go to V1 node that has no incoming edges,
-     * delete it and add it to a set 
-     * go to node V1+N that has edge connected to V1 
-     * delete it and at it to a set, 
-     * recursively run this until there are no more nodes 
-     * the original set
-     *
-     * declare a node to be “active” if it has not yet been deleted by the algorithm
-     * explicitly maintain two other pieces of information
-     *  (a) for each node W, the number of incoming edges that W has from active nodes
-     *  (b) the set S of all active nodes in G that have no incoming edges from other active nodes
-     *  at the start, all nodes are active, so we can initialize (a) and (b) with a single pass through the nodes
-     *  and edges
-     * 
-     * then, at each iteration:
-     * – select a node V from the set S and delete it
-     * – after deleting V, go through all of the nodes W to which V had an edge, and subtract one from the number of active
-     * incoming edges that we are maintaining for W
-     * – if this causes the number of active incoming edges to W to drop to zero, then we add W to the set S
-     * 
-     *
-     * 
-     */
-    
-
-
-
 
   }
 }
