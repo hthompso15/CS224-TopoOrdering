@@ -42,12 +42,32 @@ public class Graph {
   }
 
   public boolean topoOrder() {
+    ArrayList<Node> topo = new ArrayList<Node>();
+    
+    for(Node n: this.nodes) { 
+      
+      if(n.adjlistOut.size() == 0) {
+        
+        topo.add(n);
+        
+        topoOrder();
+      }
+    }
+    System.out.println(topo.size());
+    
+    
 
     return false;
+
+
+
+
+
+
     // implement this
     /**
      * go to V1 node that has no incoming edges,
-     * delete it and add it top a set 
+     * delete it and add it to a set 
      * go to node V1+N that has edge connected to V1 
      * delete it and at it to a set, 
      * recursively run this until there are no more nodes 
