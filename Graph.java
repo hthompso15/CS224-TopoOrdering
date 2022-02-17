@@ -47,21 +47,33 @@ public class Graph {
   }
 
   public boolean topoOrder() {
+    
+    // Begin the ordering for reference
     System.out.println("Begin Topological Ordering");
 
+    // Create array to store the topo ordering
     ArrayList<Node> topo = new ArrayList<Node>();
 
+    // Go through each note and assign the num
+    // in from active to the num in
     for(Node n: this.nodes) {
       n.numInFromActive = n.adjlistIn.size();
     }
 
+    // For each node in the graph
     for(Node n: this.nodes) { 
       
+      // Print out the number of current incoming nodes
       for (Node j : this.nodes) {
-        System.out.println(j + " : " + j.numInFromActive);
+        System.out.println("node " + j + " : #incoming edges from active nodes = " + j.numInFromActive);
       }
       System.out.println();
       
+      /** If there are no incoming nodes for that node
+          Add it to the topo ordering - set it to not active
+          and subtract it from current incoming nodes
+          of the nodes it connects too
+      */ 
       if(n.numInFromActive == 0 ) { 
         topo.add(n);
         n.active = false;
@@ -71,20 +83,20 @@ public class Graph {
       }
     }
 
-    //   Printing 
-    boolean order = true;
+    // Printing and returning
+    boolean order = false;
     int topo_size = topo.size();
     int node_size = this.nodes.size();
 
     if(topo_size == node_size) {
       System.out.println(topo);
+      System.out.println();
       order = true;
     }
     if(topo_size != node_size){
-      System.out.println("There is no topological ordering for this graph");
+      System.out.println("There is no topological ordering for this graph\n");
       order = false;
     }
-    
 
     return order;
   } 
