@@ -1,7 +1,8 @@
 public class Main {
   public static void main(String argv[]) {
+    //
     testOne();
-//  testTwo();
+    testTwo();
   }
 
   //-------------------------------------------------------
@@ -38,7 +39,7 @@ public class Main {
     G.addEdge(n5, n7);
     G.addEdge(n6, n7);
 
-    G.print();
+    //G.print();
 
     G.topoOrder();
   }
@@ -77,7 +78,7 @@ public class Main {
     H.addEdge(n6, n7);
     H.addEdge(n7, n5);
 
-    H.print();
+    //H.print();
 
     H.topoOrder();
   }

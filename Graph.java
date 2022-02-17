@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Graph {
   ArrayList<Node> nodes;
 
@@ -9,6 +10,10 @@ public class Graph {
 
   public void addNode(Node n) {
     this.nodes.add(n);
+  }
+
+  public void removeNode(Node n) {
+    this.nodes.remove(n);
   }
 
   public void addEdge(Node n1, Node n2) {
@@ -42,33 +47,46 @@ public class Graph {
   }
 
   public boolean topoOrder() {
+    System.out.println("Begin Topological Ordering");
+
     ArrayList<Node> topo = new ArrayList<Node>();
-    
-    // Make O(n+m) --> Currently O(n^2) i think
-    // Make second for look be recursive somehow
-    
+
+    for(Node n: this.nodes) {
+      n.numInFromActive = n.adjlistIn.size();
+    }
+
     for(Node n: this.nodes) { 
-      if(n.adjlistIn.size() == 0 ) { 
+      
+      for (Node j : this.nodes) {
+        System.out.println(j + " : " + j.numInFromActive);
+      }
+      System.out.println();
+      
+      if(n.numInFromActive == 0 ) { 
         topo.add(n);
         n.active = false;
         for(Node i : n.adjlistOut) {
-          i.adjlistIn.remove(n);
-        } 
+          i.numInFromActive--;
+        }
       }
-    }  
+    }
+
+    //   Printing 
+    boolean order = true;
+    int topo_size = topo.size();
+    int node_size = this.nodes.size();
+
+    if(topo_size == node_size) {
+      System.out.println(topo);
+      order = true;
+    }
+    if(topo_size != node_size){
+      System.out.println("There is no topological ordering for this graph");
+      order = false;
+    }
     
-    //if (all nodes are in topo) {
-      // System.out.println(topo);
-      //return true;
-    //}
-    //else:
-      //System.out.print("There is no ordering");
-      //return false;
-    
 
-
-    System.out.println(topo);
-    return false;
-
-  }
+    return order;
+  } 
 }
+
