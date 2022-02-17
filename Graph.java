@@ -1,5 +1,8 @@
-import java.util.ArrayList;
+// Harrison Thompson
+// CS 224
+// Topological ordering
 
+import java.util.ArrayList;
 
 public class Graph {
   ArrayList<Node> nodes;
